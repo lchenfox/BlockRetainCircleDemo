@@ -26,6 +26,7 @@
     self.obj = [[MyObject alloc] init];
     __weak typeof(self) weakSelf = self;
     [self.obj start:^{
+        if (!weakSelf) return;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         NSLog(@"name: %@", strongSelf->name);
     }];
